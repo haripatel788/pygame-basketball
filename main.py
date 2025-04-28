@@ -2,26 +2,23 @@ import pygame
 import random
 
 pygame.init()
-
 info = pygame.display.Info()
 WIDTH, HEIGHT = info.current_w, info.current_h
-
 screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
-pygame.display.set_caption("Basketball Catch Game")
-
+pygame.display.set_caption("Rudra's Basketball Catch Game")
 WHITE = (255, 255, 255)
 RED = (200, 50, 50)
 BLUE = (50, 50, 200)
 GREEN = (50, 200, 50)
 BLACK = (0, 0, 0)
-
 font = pygame.font.Font(None, 48)
 
 hoop_img = pygame.image.load("hoop.png")
-original_width, original_height = hoop_img.get_width(), hoop_img.get_height()
-scale_factor = WIDTH / 15 / original_width
-hoop_width = int(original_width * scale_factor)
-hoop_height = int(original_height * scale_factor)
+original_width = hoop_img.get_width()
+original_height = hoop_img.get_height()
+s_factor = WIDTH / 15 / original_width
+hoop_width = int(original_width * s_factor)
+hoop_height = int(original_height * s_factor)
 hoop_img = pygame.transform.scale(hoop_img, (hoop_width, hoop_height))
 
 basketball_img = pygame.image.load("basketball.png")
@@ -77,7 +74,10 @@ def show_game_over_screen():
     screen.fill(BLACK)
     title = font.render("Game Over!", True, RED)
     score_text = font.render(f"Final Score: {score}", True, WHITE)
-    replay_x, replay_y, replay_w, replay_h = WIDTH // 2 - 100, HEIGHT // 2, 200, 50
+    replay_x = WIDTH // 2 - 100
+    replay_y = HEIGHT // 2
+    replay_w = 200
+    replay_h = 50
 
     screen.blit(title, (WIDTH // 2 - title.get_width() // 2, HEIGHT // 4))
     screen.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, HEIGHT // 3))
