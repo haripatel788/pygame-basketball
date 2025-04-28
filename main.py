@@ -15,11 +15,14 @@ RED = (200, 50, 50)
 
 # Load assets
 try:
+    print("Attempting to load hoop.png...")
     hoop_img = pygame.image.load("hoop.png")
     hoop_img = pygame.transform.scale(hoop_img, (80, 30))  # Resize hoop
-except pygame.error:
-    print("Failed to load hoop image! Using placeholder.")
+    print("Successfully loaded hoop.png")
+except pygame.error as e:
+    print(f"Failed to load hoop image: {e}")
     hoop_img = pygame.Surface((80, 30))  # Placeholder rectangle
+    hoop_img.fill((255, 0, 0))  # Make it red so it's visible
 
 try:
     basketball_img = pygame.image.load("basketball.png")
